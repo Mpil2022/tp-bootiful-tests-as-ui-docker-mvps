@@ -1,0 +1,54 @@
+
+:icons: font
+:source-highlighter: coderay
+:pygments-style: manni
+:pygments-linenums-mode: inline
+:title-page:
+:version: 2021-2022
+
+= bootiful tests avec Springboot, Serenity, Github Actions et SonarQube
+Jauffrey Flach <jauffrey.flach@gmail.com>
+{version}
+
+== A rendre
+NOTE: Ce TP se compose de 3 parties. Il faudra rendre uniquement la 3ème partie, mais vous aurez besoin des 2 autres parties pour faire fonctionner la troisième. Faites bien attention d'avoir des éléments fonctionnels au début de chaque séance!
+
+== Pré-requis
+** un compte Github
+** Internet
+** JDK 8+
+** Maven 3+
+** NodeJS et Angular CLI
+** Git 
+** Un IDE (STS ou IntelliJ IDEA)
+
+== Partie 2: Intégration continue avec Github Actions et construction d'interface
+=== Analyse statique avec Sonarcloud
+* Utilisez votre compte sur https://sonarcloud.io/ avec votre compte GitHub, et intégrez SonarCloud comme nous l'avions fait pour le TP précédent sur l'analyse statique.
+
+Vérifiez que votre projet est bien ananlysé, et naviguez dans les "problèmes" rencontrés afin de mieux les comprendre.
+
+=== Préparation du front-end Angular
+Construisez un simple front sur l'API que nous venons de développer. 
+Nous devrons être capable: 
+
+* De récupérer le nombre (entier) en cours (sur la home page à l'initialisation ou avec un bouton)
+* D'ajouter un nombre (entier) et de voir le résultat
+
+Vous avez 2 possibilités pour éxécuter les 2 composants du projet. Choisissez une des deux implémentations. 
+
+==== 1 seul jar pour les gouverner tous
+Utilisez le Tomcat intégré dans spring-boot pour servir de manière statique vos fichiers Angular. L'application Angular devra attaquer l'API REST développée précédemment. 
+_En clair_: votre code Angular doit être un module Maven (utilisez le https://github.com/eirslett/frontend-maven-plugin pour réaliser le build), et le code généré doit faire partie des fichiers statiques servis par votre jar. Lancer 
+
+==== 2 applications
+Votre front Angular et votre back Spring sont 2 applications séparées. Chacune s'éxécute localement, et l'application Angular est configurée pour se connecter sur l'API de l'additionneur REST.
+
+TIP: Vous devrez utiliser l'annotation @Cors sur votre API sous peine de voir vos requêtes bloquées par votre navigateur.
+
+=== Dockerisation
+Une fois votre (vos) projet(s) construits, essayez d'en faire une image docker et de la publier sur le docker Hub. Il existe plusieurs possibilités, choisissez celle qui vous convient le mieux (Github Action, Dockerfile, plugin Maven, ...)
+
+<<<
+== Webographie
+* https://github.com/eirslett/frontend-maven-plugin
