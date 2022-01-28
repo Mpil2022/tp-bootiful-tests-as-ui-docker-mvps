@@ -7,7 +7,7 @@ FROM node:latest as build
 WORKDIR /usr/local/app/
 
 #Copy the source code to the working directory
-COPY ./Adder-Front /usr/local/app
+COPY ./src /usr/local/app
 
 #Install the dependencies
 RUN npm install
