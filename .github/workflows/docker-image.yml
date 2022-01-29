@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Log in to Docker Hub
-      uses: docker/login-action@34b7d700-3323-4221-be82-d773b601e414
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_TOKEN }}
