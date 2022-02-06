@@ -1,10 +1,10 @@
 <form class="container">
   <div class="mb-3">
     <label class="form-label">Number</label>
-    <input type="number" class="form-control" #numinput>
+    <input type="number" class="form-control" id="inputadder" #numinput>
   </div>
-  <button class="btn btn-primary" (click)="add(numinput.value)">Add</button>
+  <button class="btn btn-primary" (click)="add(numinput.value)" id="buttonadder">Add</button>
   <div class="mb-3">
-    <label class="form-label">{{num}}</label>
+    <p class="form-label">{{num}}</p>
   </div>
 </form>
