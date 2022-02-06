@@ -19,7 +19,7 @@ RUN npm install
 RUN npm run build
 
 # Install Java and Maven
-RUN apt-get install openjdk-8-jdk maven
+RUN apt-get update -y && apt-get install openjdk-8-jdk maven -y
 
 WORKDIR /usr/local/app/back
 
