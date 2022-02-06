@@ -21,8 +21,8 @@ RUN npm run build
 WORKDIR /usr/local/app/back
 
 # Install Java and Maven
-RUN apt-get install software-properties-common -y 
 RUN apt-get update -y 
+RUN apt-get install software-properties-common -y 
 RUN add-apt-repository ppa:openjdk-r/ppa 
 RUN apt-get install openjdk-8-jdk maven -y
 
