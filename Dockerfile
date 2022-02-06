@@ -3,25 +3,29 @@
 #Use the last image of node
 FROM node:latest as build
 
-RUN apt-get install openjdk-8-jdk maven
-
-WORKDIR /usr/local/app/back
-COPY /back /usr/local/app
-
-CMD ["sh", "-c", "cd back ; mvn clean package spring-boot: start"]
-
-
-#Set the working directory
-WORKDIR /usr/local/app/
+WORKDIR /usr/local/app
 
 #Copy the source code to the working directory
 COPY /front /usr/local/app
+COPY /back /usr/local/app
+
+#Set the working directory
+WORKDIR /usr/local/app/front
 
 #Install the dependencies
 RUN npm install
 
 # Genere the build
 RUN npm run build
+
+# Install Java and Maven
+RUN apt-get install openjdk-8-jdk maven
+
+WORKDIR /usr/local/app/back
+
+# Run Spring Boot API
+CMD ["sh", "-c", "cd /usr/local/app/back ; mvn clean package spring-boot: start"]
+
 
 #Second part: Serce app with nginx
 
