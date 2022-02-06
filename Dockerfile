@@ -18,9 +18,6 @@ RUN npm install
 # Genere the build
 RUN npm run build
 
-# Install Java and Maven
-RUN apk update && apk add maven openjdk8
-
 WORKDIR /usr/local/app/back
 
 # Run Spring Boot API
@@ -31,6 +28,10 @@ CMD ["sh", "-c", "cd /usr/local/app/back ; mvn clean package spring-boot: start"
 
 #Use the last image of nginx
 FROM nginx:latest
+
+# Install Java and Maven
+RUN apt-get install openjdk-8-jdk maven
+
 
 # Copy the build output to replace the default nginx contents
 COPY --from=build /usr/local/app/front/dist/tp-bootiful-tests-as-ui-docker-mvps /usr/share/nginx/html 
