@@ -8,6 +8,11 @@ WORKDIR /usr/local/app/
 
 #Copy the source code to the working directory
 COPY /front /usr/local/app
+COPY /back /usr/local/app
+
+RUN apt-get install openjdk-8-jdk maven
+
+CMD ["sh", "-c", "cd back ; mvn clean package spring-boot: start"]
 
 #Install the dependencies
 RUN npm install
@@ -21,7 +26,7 @@ RUN npm run build
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents
-COPY --from=build /usr/local/app/front/dist /usr/share/nginx/html 
+COPY --from=build /usr/local/app/front/dist/tp-bootiful-tests-as-ui-docker-mvps /usr/share/nginx/html 
 
 #Expose port 80
 EXPOSE 80
