@@ -21,7 +21,7 @@ RUN npm run build
 WORKDIR /usr/local/app/back
 
 # Install Java and Maven
-RUN apt-get update -y && add-apt-repository ppa:openjdk-r/ppa && apt-get install openjdk-8-jdk maven -y
+RUN apt-get update -y && apt-get install software-properties-common && add-apt-repository ppa:openjdk-r/ppa && apt-get install openjdk-8-jdk maven -y
 
 # Run Spring Boot API
 CMD ["sh", "-c", "cd /usr/local/app/back ; mvn clean package spring-boot: start"]
