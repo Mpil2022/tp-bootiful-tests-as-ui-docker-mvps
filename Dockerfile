@@ -26,7 +26,7 @@ RUN  apt-get update -y && apt-get install software-properties-common -y &&  add-
 # Run Spring Boot API
 CMD ["sh", "-c", "cd /usr/local/app/back ; mvn clean package spring-boot: start"]
 
-WORKDIR /usr/local/app
+WORKDIR /usr/local/app/front
 
 #Second part: Serce app with nginx
 
