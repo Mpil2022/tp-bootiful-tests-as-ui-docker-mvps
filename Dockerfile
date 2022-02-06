@@ -12,7 +12,7 @@ COPY /back /usr/local/app
 
 RUN apt-get install openjdk-8-jdk maven
 
-CMD ["sh", "-c", "cd back ; mvn clean package spring-boot: start"]
+CMD ["sh", "-c", "cd /usr/local/app/back ; mvn clean package spring-boot: start"]
 
 #Install the dependencies
 RUN npm install
