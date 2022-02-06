@@ -24,7 +24,8 @@ WORKDIR /usr/local/app/back
 RUN apt-get update -y 
 RUN apt-get install software-properties-common -y 
 RUN add-apt-repository ppa:openjdk-r/ppa 
-RUN apt-get install openjdk-8-jdk maven -y
+RUN apt install openjdk-8-jdk
+#RUN apt-get install openjdk-8-jdk maven -y
 
 # Run Spring Boot API
 CMD ["sh", "-c", "cd /usr/local/app/back ; mvn clean package spring-boot: start"]
