@@ -6,6 +6,8 @@ FROM node:latest as build
 RUN apt-get install openjdk-8-jdk maven
 
 WORKDIR /usr/local/app/back
+COPY /back /usr/local/app
+
 CMD ["sh", "-c", "cd back ; mvn clean package spring-boot: start"]
 
 
@@ -14,7 +16,6 @@ WORKDIR /usr/local/app/
 
 #Copy the source code to the working directory
 COPY /front /usr/local/app
-COPY /back /usr/local/app
 
 #Install the dependencies
 RUN npm install
