@@ -1,11 +1,11 @@
 FROM node:alpine as node
 
-WORKDIR /app
-COPY . .
+WORKDIR /usr/local/app
+COPY . /usr/local/app
 RUN npm i -g @angular/cli
 RUN npm i
 RUN npm run build
 
 FROM nginx:alpine
-COPY --from=node /app/dist/tp-bootiful-front /usr/share/nginx/html
+COPY --from=node /usr/local/app/dist/tp-bootiful-front /usr/share/nginx/html
 EXPOSE 4200
