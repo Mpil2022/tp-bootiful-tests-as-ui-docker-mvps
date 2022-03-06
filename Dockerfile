@@ -34,7 +34,6 @@ WORKDIR /usr/local/app/front
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents
-D:\tp-bootiful-tests-as-ui-docker-mvps\front\dist\tp-bootiful-tests-as-ui-docker-mvps
 COPY --from=build /usr/local/app/tp-bootiful-tests-as-ui-docker-mvps/front/dist/tp-bootiful-tests-as-ui-docker-mvps /usr/share/nginx/html 
 
 #Expose port 80
