@@ -1,0 +1,29 @@
+#Workflow name
+name: Test Pipeline
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: "11"
+      # Maven package cache to "improve" speed
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Run SrpingBoot Application and test it with newman (postman)
+        run: |
+          mvn clean package spring-boot:start
+          npm install -g newman
+          newman run "src/test/java/com/resources/TestCollection.json"
+      - name: Run Tests
+        run: mvn test -B package --file pom.xml
